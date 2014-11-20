@@ -1,2 +1,2 @@
-slide-viewer
-============
+slides-viewer
+=============
