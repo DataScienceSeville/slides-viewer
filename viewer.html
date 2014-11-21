@@ -195,6 +195,12 @@
 
       // Setup Remark
       var md = GetURLParameter("md");
+
+      //control if slide parameter exists
+      if ( md == undefined || md == 'undefined' || md == '' )
+	window.location = 'http://datascienceseville.github.io/slides-viewer/';
+		
+
       var slideshow = remark.create({
         ratio: '16:9',
         sourceUrl: md,
