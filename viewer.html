@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Data Science Seville</title>
+    <link rel="shortcut icon" href="static/favicon.ico">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
       @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
@@ -150,8 +151,7 @@
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured"></script>
     </script>
     <script>
-
-      // URL functions
+      // URL and file functions
       function GetURLParameter(sParam) {
         var sPageURL = window.location.search.substring(1);
         var sURLVariables = sPageURL.split('&');
@@ -164,17 +164,16 @@
         }
       }
 
-      function base_url(url, segment) {
-        // get the segments
+      function baseUrl(url, segment) {
+        // Get the segments
         pathArray = url.split( '/' );
-        // find where the segment is located
+        // Find where the segment is located
         indexOfSegment = pathArray.indexOf(segment);
-        // make base_url be the origin plus the path to the segment
+        // Make baseUrl be the origin plus the path to the segment
         return pathArray.slice(0,indexOfSegment).join('/') + '/';
       }
 
       function isAbsolute(url) {
-
         var pat = /^https?:\/\//i;
         if (pat.test(url)) {
           return true;
@@ -183,7 +182,7 @@
         return false;
       }
 
-      function ResolveUrl(baseUrl, url) {
+      function resolveUrl(baseUrl, url) {
         if ( isAbsolute(url) ) return url;
 
           if ( url.indexOf("~") == 0 ) url = url.substring(1);
@@ -193,40 +192,70 @@
           return baseUrl + url;
       }
 
-      // Setup Remark
-      var md = GetURLParameter("md");
+      function existFile(fileName) {
+        var http = new XMLHttpRequest();
+        http.open('HEAD', fileName, false);
 
-      //control if slide parameter exists
-      if ( md == undefined || md == 'undefined' || md == '' )
-	window.location = 'http://datascienceseville.github.io/slides-viewer/';
-		
+        try {
+          http.send();
+        } catch (e) {
+          return false;
+        }
 
-      var slideshow = remark.create({
-        ratio: '16:9',
-        sourceUrl: md,
-        highlightStyle: 'monokai'
-      });
-
-      // Setup image URLs
-      var base_url = base_url(md);
-      var imgs = $('img');
-      for(var i=0; i < imgs.length; i++) {
-        var img = imgs[i];
-        $(img).attr('src', ResolveUrl(base_url, $(img).attr('src')) );
+        return http.status != 404;
       }
 
-      // Setup MathJax
-      MathJax.Hub.Config({
-        tex2jax: {
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      // Check if this file it's working wiht a '.md' file online, offline or
+      // with no file at all
+      var md = GetURLParameter("md");
+      var isMarkdown = false;
+      if (md == undefined || md == 'undefined' || md == '') { // Offline or with no file
+
+        md = 'slides.md';
+        if (existFile(md)) { // Offline
+          isMarkdown = true;
         }
-      });
-      MathJax.Hub.Queue(function() {
-        $(MathJax.Hub.getAllJax()).map(function(index, elem) {
-          return(elem.SourceElement());
-        }).parent().addClass('has-jax');
-      });
-      MathJax.Hub.Configured();
+
+      } else { // Online
+        isMarkdown = true;
+      }
+
+      if (isMarkdown) {
+
+        var slideshow = remark.create({
+          ratio: '16:9',
+          sourceUrl: md,
+          highlightStyle: 'monokai'
+        });
+
+        // Setup image URLs only in online mode
+        if (md != 'slides.md') {
+          var baseUrl = baseUrl(md);
+          var imgs = $('img');
+          for(var i=0; i < imgs.length; i++) {
+            var img = imgs[i];
+            $(img).attr('src', resolveUrl(baseUrl, $(img).attr('src')) );
+          }
+        }
+
+        // Setup MathJax
+        MathJax.Hub.Config({
+          tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          }
+        });
+
+        MathJax.Hub.Queue(function() {
+          $(MathJax.Hub.getAllJax()).map(function(index, elem) {
+            return(elem.SourceElement());
+          }).parent().addClass('has-jax');
+        });
+
+        MathJax.Hub.Configured();
+
+      } else {
+        window.location = 'http://datascienceseville.github.io/slides-viewer/';
+      }
     </script>
   </body>
 </html>

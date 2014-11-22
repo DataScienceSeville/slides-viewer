@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <title>Data Science Seville</title>
+    <link rel="shortcut icon" href="static/favicon.ico">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>Data Science Seville</title>
 
     <!-- Bootstrap core CSS -->
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -41,7 +40,7 @@
           <a class="navbar-brand" href="#">Data Science Seville</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-        
+
         </div>
       </div>
     </nav>
@@ -84,7 +83,7 @@
             <div class="col-xs-6 col-sm-3 placeholder">
                 <img data-src="holder.js/100x100/auto/industrial/text:Lecture 4" class="img-responsive" lecture="working" alt="Generic placeholder thumbnail">
             </div>
-           
+
           </div>
 
 	</div>
@@ -105,9 +104,9 @@
             <div class="col-xs-6 col-sm-3 placeholder">
                 <img data-src="holder.js/100x100/auto/vine/text:Lecture 4" class="img-responsive" lecture="working" alt="Generic placeholder thumbnail">
             </div>
-           
+
           </div>
-	
+
 	</div>
 
 	<div id="collective-intelligence" module="collective-intelligence" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -126,7 +125,7 @@
             <div class="col-xs-6 col-sm-3 placeholder">
                 <img data-src="holder.js/100x100/auto/industrial/text:Lecture 4" class="img-responsive" lecture="working" alt="Generic placeholder thumbnail">
             </div>
-           
+
           </div>
 
 	</div>
@@ -147,7 +146,7 @@
             <div class="col-xs-6 col-sm-3 placeholder">
                 <img data-src="holder.js/100x100/auto/lava/text:Lecture 4" class="img-responsive" lecture="working" alt="Generic placeholder thumbnail">
             </div>
-           
+
           </div>
 
 	</div>
@@ -172,9 +171,9 @@
             <div class="col-xs-6 col-sm-3 placeholder">
                 <img data-src="holder.js/100x100/auto/vine/text:Lecture 4" class="img-responsive" lecture="working" alt="Generic placeholder thumbnail">
             </div>
-           
+
           </div>
-	
+
 	</div>
 
 	<div id="hadoop" module="hadoop" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -193,7 +192,7 @@
             <div class="col-xs-6 col-sm-3 placeholder">
                 <img data-src="holder.js/100x100/auto/industrial/text:Lecture 4" class="img-responsive" lecture="working" alt="Generic placeholder thumbnail">
             </div>
-           
+
           </div>
 
 	</div>
@@ -214,7 +213,7 @@
             <div class="col-xs-6 col-sm-3 placeholder">
                 <img data-src="holder.js/100x100/auto/lava/text:Lecture 4" class="img-responsive" lecture="working" alt="Generic placeholder thumbnail">
             </div>
-           
+
           </div>
 
 	</div>
@@ -235,7 +234,7 @@
             <div class="col-xs-6 col-sm-3 placeholder">
                 <img data-src="holder.js/100x100/auto/vine/text:Lecture 4" class="img-responsive" lecture="working" alt="Generic placeholder thumbnail">
             </div>
-           
+
           </div>
 
 
@@ -258,17 +257,17 @@
 	else
           window.location = "http://datascienceseville.github.io/slides-viewer/viewer.html?md=https://raw.githubusercontent.com/DataScienceSeville/" + module + "/master/Lecture%2520" + lecture + "/slides.md";
       }
-   
+
       $( document ).ready(function() {
-	  
+
 	 //get all modules (div with attribute module)
          var modules = $("div[module]");
-	
+
 
 
          for(var j=0; j < modules.length; j++) {
-           
-	
+
+
            //get module name (name in hithub)
 	   var module = $(modules[j]).attr('module');
 
@@ -278,23 +277,23 @@
 	   var parents = imgs.parent();
 
            for(var i=0; i < imgs.length; i++) {
-           
+
              imgs[i].remove();
 	     var lecture = $(imgs[i]).attr('lecture');
-	
+
 
 	     var link = $('<a>',{
 	       href: '#',
 	       module: module,
                lecture: lecture,
-	       click: function(event){ 
-		   var module = $(event.delegateTarget).attr('module'); 
+	       click: function(event){
+		   var module = $(event.delegateTarget).attr('module');
 		   var lecture = $(event.delegateTarget).attr('lecture');
 
-		  
+
 		   goSlide(module, lecture); }
 	     });
-		
+
              $(link[0]).append(imgs[i]);
 	     $(parents[i]).prepend(link[0]);
 	   }
