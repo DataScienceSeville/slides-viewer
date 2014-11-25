@@ -9,6 +9,9 @@
       @import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
       @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
+      /*
+       * DEFAULT CSS
+       */
       body {
         font-family: 'Droid Serif';
       }
@@ -17,16 +20,28 @@
         font-weight: 400;
         margin-bottom: 0;
       }
-      .remark-slide-content h1 { font-size: 3em; }
-      .remark-slide-content h2 { font-size: 2em; }
-      .remark-slide-content h3 { font-size: 1.6em; }
+      .remark-slide-content h1 {
+        font-size: 3em;
+      }
+      .remark-slide-content h2 {
+        font-size: 2em;
+      }
+      .remark-slide-content h3 {
+        font-size: 1.6em;
+      }
       .footnote {
         position: absolute;
         bottom: 3em;
       }
-      li p { line-height: 1.25em; }
-      .red { color: #fa0000; }
-      .large { font-size: 2em; }
+      li p {
+        line-height: 1.25em;
+      }
+      .red {
+        color: #fa0000;
+      }
+      .large {
+        font-size: 2em;
+      }
       a, a > code {
         color: rgb(249, 38, 114);
         text-decoration: none;
@@ -37,8 +52,12 @@
         background: #e7e8e2;
         border-radius: 5px;
       }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-      .remark-code-line-highlighted     { background-color: #373832; }
+      .remark-code, .remark-inline-code {
+        font-family: 'Ubuntu Mono';
+      }
+      .remark-code-line-highlighted {
+        background-color: #373832;
+      }
       .pull-left {
         float: left;
         width: 47%;
@@ -109,40 +128,68 @@
         height: 92%;
         float: left;
       }
-        .left-column h2:last-of-type, .left-column h3:last-child {
-          color: #000;
-        }
+      .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+      }
       .right-column {
         width: 75%;
         float: right;
         padding-top: 1em;
       }
 
-      /* Custom CSS */
-      img { max-width:350px; max-height:350px; }
-      h1 { margin-top:0px; }
-      img {  border:2px solid #fff; box-shadow: 0px 0px 40px #ccc; -moz-box-shadow: 0px 0px 40px #ccc; -webkit-box-shadow: 0px 0px 40px #ccc; -khtml-box-shadow: 0px 0px 40px #ccc; }
-      /* Two-column layout */
-      .left-column {
+      /*
+       * CUSTOM CSS
+       */
+      h1 {
+        margin-top: 0;
+      }
+      .default-top-maring h1 {
+        margin-top: 40;
+      }
+      .left-column-50 {
         width: 50%;
         float: left;
        }
-
-      .right-column {
+      .right-column-50 {
         width: 50%;
         float: right;
         padding-top: 1em;
       }
-
-      .font-size-25 { font-size: 25px; } .font-size-30 { font-size: 30px; } .font-size-40 { font-size: 40px; }
-      .smaller { font-size: small; }
-      .footnote {
-        position: absolute;
-        bottom: 3em;
+      .font-size-25 {
+        font-size: 25px;
       }
-      .onlyimage img { min-width:100%;  }
-      .mini-images img { max-width:100px; }
-      .exercise { font-size:small; background-color: #AEB404; border-radius: 5px; padding: 5px 20px}
+      .font-size-30 {
+        font-size: 30px;
+      }
+      .font-size-40 {
+        font-size: 40px;
+      }
+      .smaller {
+        font-size: small;
+      }
+      .image-only img {
+        min-width: 100%;
+      }
+      .image-mini img {
+        max-width: 100px;
+      }
+      .image-350 img {
+        max-width: 350px;
+        max-height: 350px;
+      }
+      .image-border {
+        border: 2px solid #fff;
+        box-shadow: 0px 0px 40px #ccc;
+        -moz-box-shadow: 0px 0px 40px #ccc;
+        -webkit-box-shadow: 0px 0px 40px #ccc;
+        -khtml-box-shadow: 0px 0px 40px #ccc;
+      }
+      .exercise {
+        font-size:small;
+        background-color: #AEB404;
+        border-radius: 5px;
+        padding: 5px 20px
+      }
     </style>
   </head>
   <body>
